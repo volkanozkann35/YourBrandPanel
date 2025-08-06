@@ -1,20 +1,18 @@
-{
-  "name": "client-vite",
+﻿{
+  "name": "yourbrandpanel-client",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "client": "vite",
-    "server": "node -e \"import('path').then(p=>{import('child_process').then(c=>{const s=p.resolve(process.cwd(),'../server');c.execSync(`npm run dev --prefix \\\"${s}\\\"`,{stdio:'inherit'})})})\"",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2"
+    "react-router-dom": "^6.14.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.0",
-    "concurrently": "^8.2.0",
-    "vite": "^4.5.0"
+    "vite": "^4.5.14"
   }
 }
