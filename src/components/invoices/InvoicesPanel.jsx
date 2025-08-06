@@ -4,24 +4,25 @@ import InvoiceAdd from "./InvoiceAdd";
 
 export default function InvoicesPanel() {
   const [invoices, setInvoices] = useState([
-    { id: 1, customer: "Volkan", amount: 500, status: "Ödendi" },
-    { id: 2, customer: "Ayşe", amount: 750, status: "Beklemede" },
+    { id: 1, customer: "Ahmet", amount: 300, status: "Ödendi" },
+    { id: 2, customer: "Elif", amount: 500, status: "Beklemede" },
   ]);
 
   const addInvoice = (invoice) => setInvoices([...invoices, invoice]);
-  const deleteInvoice = (id) => setInvoices(invoices.filter(invoice => invoice.id !== id));
   const toggleStatus = (id) => {
-    setInvoices(invoices.map(invoice =>
-      invoice.id === id
-        ? { ...invoice, status: invoice.status === "Ödendi" ? "Beklemede" : "Ödendi" }
-        : invoice
-    ));
+    setInvoices(
+      invoices.map((i) =>
+        i.id === id ? { ...i, status: i.status === "Ödendi" ? "Beklemede" : "Ödendi" } : i
+      )
+    );
   };
+  const deleteInvoice = (id) => setInvoices(invoices.filter((i) => i.id !== id));
 
   return (
     <div>
+      <h2>Fatura Paneli</h2>
       <InvoiceAdd onAdd={addInvoice} />
-      <Invoices invoices={invoices} deleteInvoice={deleteInvoice} toggleStatus={toggleStatus} />
+      <Invoices invoices={invoices} toggleStatus={toggleStatus} deleteInvoice={deleteInvoice} />
     </div>
   );
 }
